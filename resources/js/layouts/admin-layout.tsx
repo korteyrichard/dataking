@@ -51,7 +51,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, user, header
         key={item.name}
         href={item.href}
         className={`flex h-9 w-9 items-center justify-center rounded-lg ${
-          item.current ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:text-foreground"
+          item.current ? "bg-yellow-400 text-yellow-900" : "text-muted-foreground hover:bg-yellow-100 hover:text-yellow-800"
         } transition-colors md:h-8 md:w-8`}
       >
         <Icon name={item.icon} className="h-5 w-5" />
@@ -65,7 +65,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, user, header
         key={item.name}
         href={item.href}
         className={`flex items-center gap-4 px-2.5 ${
-          item.current ? "text-foreground" : "text-muted-foreground hover:text-foreground"
+          item.current ? "text-yellow-800 bg-yellow-100 rounded-md" : "text-muted-foreground hover:text-yellow-800 hover:bg-yellow-50 rounded-md"
         }`}
       >
         <Icon name={item.icon} className="h-5 w-5" />
@@ -113,7 +113,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({ children, user, header
               {user.name}
             </div>
 
-            <Link href={route('profile.edit')} className="h-8 w-8 flex items-center justify-center rounded-lg text-muted-foreground hover:text-foreground transition-colors">
+            <Link href={route('profile.edit')} className="h-8 w-8 flex items-center justify-center rounded-lg text-muted-foreground hover:bg-yellow-100 hover:text-yellow-800 transition-colors">
               <Icon name="Settings" className="h-4 w-4" />
             </Link>
             <Button

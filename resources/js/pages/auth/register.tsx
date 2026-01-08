@@ -27,13 +27,13 @@ export default function Register() {
     };
 
     return (
-        <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
+        <div className="min-h-screen bg-muted/40 flex items-center justify-center p-4">
             <Head title="Register" />
             <div className="w-full max-w-sm">
-                <div className="bg-white rounded-lg shadow-lg p-8">
+                <div className="bg-background rounded-lg shadow-lg p-8 border border-border">
                     <div className="flex flex-col items-center mb-8">
-                        <div className="bg-blue-900 p-4 rounded-lg mb-6">
-                            <img src='/dataking.jpg' alt="Dataking Logo" className="w-52 h-auto rounded-lg" />
+                        <div className="bg-muted p-4 rounded-lg mb-6">
+                            <img src='/dataking.jpg' alt="Dataking Logo" className="w-40 h-auto rounded-lg" />
                         </div>
                     </div>
                     <form onSubmit={submit} className="space-y-4">
@@ -46,7 +46,7 @@ export default function Register() {
                                 autoComplete="name"
                                 onChange={(e) => setData('name', e.target.value)}
                                 required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                             />
                             {errors.name && <div className="text-red-500 text-xs mt-1">{errors.name}</div>}
                         </div>
@@ -58,7 +58,7 @@ export default function Register() {
                                 value={data.business_name}
                                 autoComplete="organization"
                                 onChange={(e) => setData('business_name', e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                             />
                             {errors.business_name && <div className="text-red-500 text-xs mt-1">{errors.business_name}</div>}
                         </div>
@@ -70,7 +70,7 @@ export default function Register() {
                                 value={data.phone}
                                 autoComplete="tel"
                                 onChange={(e) => setData('phone', e.target.value)}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                             />
                             {errors.phone && <div className="text-red-500 text-xs mt-1">{errors.phone}</div>}
                         </div>
@@ -84,7 +84,7 @@ export default function Register() {
                                 autoComplete="username"
                                 onChange={(e) => setData('email', e.target.value)}
                                 required
-                                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                             />
                             {errors.email && <div className="text-red-500 text-xs mt-1">{errors.email}</div>}
                         </div>
@@ -99,7 +99,7 @@ export default function Register() {
                                     autoComplete="new-password"
                                     onChange={(e) => setData('password', e.target.value)}
                                     required
-                                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-3 pr-10 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                                 />
                                 <button
                                     type="button"
@@ -126,7 +126,7 @@ export default function Register() {
                                     autoComplete="new-password"
                                     onChange={(e) => setData('password_confirmation', e.target.value)}
                                     required
-                                    className="w-full px-4 py-3 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-4 py-3 pr-10 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                                 />
                                 <button
                                     type="button"
@@ -143,18 +143,18 @@ export default function Register() {
                             {errors.password_confirmation && <div className="text-red-500 text-xs mt-1">{errors.password_confirmation}</div>}
                         </div>
                         <Button 
-                            className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 py-3 rounded-md font-medium transition-colors" 
+                            className="w-full bg-accent hover:bg-accent/80 text-accent-foreground py-3 rounded-md font-medium transition-colors" 
                             disabled={processing}
                         >
                             Create Account →
                         </Button>
                     </form>
                     <div className="mt-6 text-center space-y-2">
-                        <div className="text-sm text-blue-700">
-                            Already have an account? <Link href={route('login')} className="text-yellow-600 hover:underline font-medium">Sign in</Link>
+                        <div className="text-sm text-foreground">
+                            Already have an account? <Link href={route('login')} className="text-accent hover:underline font-medium">Sign in</Link>
                         </div>
                         <div className="text-sm">
-                            <Link href="/" className="text-yellow-600 hover:underline font-medium">Home</Link>
+                            <Link href="/" className="text-accent hover:underline font-medium">Home</Link>
                         </div>
                     </div>
                 </div>

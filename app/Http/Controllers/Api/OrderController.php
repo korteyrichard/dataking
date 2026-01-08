@@ -47,6 +47,10 @@ class OrderController extends Controller
             10 => 'TELECEL', // Dealer Telecel
             11 => 'ISHARE',  // Dealer Ishare
             12 => 'BIGTIME', // Dealer Bigtime
+            13 => 'MTN',     // VIP MTN
+            14 => 'TELECEL', // VIP Telecel
+            15 => 'ISHARE',  // VIP Ishare
+            16 => 'BIGTIME', // VIP Bigtime
         ];
         
         if (!isset($networkMap[$request->network_id])) {
@@ -56,7 +60,20 @@ class OrderController extends Controller
         $networkName = $networkMap[$request->network_id];
         
         // Determine product type based on network_id range
-        $productType = in_array($request->network_id, [5, 6, 7, 8]) ? 'agent_product' : 'dealer_product';
+        if (in_array($request->network_id, [5, 6, 7, 8])) {
+            $productType = 'agent_product';
+        } elseif (in_array($request->network_id, [9, 10, 11, 12])) {
+            $productType = 'dealer_product';
+        } elseif (in_array($request->network_id, [13, 14, 15, 16])) {
+            $productType = 'vip_product';
+        } else {
+            return response()->json(['error' => 'Invalid network ID'], 400);
+        }
+        
+        // Check if user has access to VIP products
+        if ($productType === 'vip_product' && $user->role !== 'vip') {
+            return response()->json(['error' => 'Access denied. VIP products are only available to VIP users.'], 403);
+        }
         
         $product = Product::where('network', $networkName)
             ->where('product_type', $productType)

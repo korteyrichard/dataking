@@ -65,8 +65,8 @@ export default function DashboardLayout({ user, header, children }: DashboardLay
                 as={item.name === 'Log Out' ? 'button' : 'a'}
                 className={`
                     ${item.current
-                        ? 'bg-accent text-foreground font-bold'
-                        : 'text-foreground/90 hover:bg-accent/20 hover:text-accent'
+                        ? 'bg-yellow-400 text-yellow-900 font-bold'
+                        : 'text-foreground/90 hover:bg-yellow-100 hover:text-yellow-800'
                     }
                     group flex items-center px-2 py-2 text-sm font-medium rounded-md w-full transition-all duration-200
                 `}
@@ -83,7 +83,7 @@ export default function DashboardLayout({ user, header, children }: DashboardLay
             <div className="flex items-center flex-shrink-0 px-4">
                 <Link href="/">
                     <div className="text-white text-lg font-bold flex flex-row gap-4 items-center justify-between">
-                        <img src='/dataking.jpg' alt="Dataking Logo" className="w-60 h-30 mb-4 mx-auto rounded-3xl " />
+                        <img src='/dataking.jpg' alt="Dataking Logo" className="w-40 h-20 mb-4 mx-auto rounded-3xl " />
                     </div>
                 </Link>
             </div>
@@ -92,7 +92,7 @@ export default function DashboardLayout({ user, header, children }: DashboardLay
                     {renderNavigationItems(navigation, isMobile)}
                 </div>
 
-                <a href='https://wa.me/233548471118' className="w-[200px] ml-3 text-left mt-10 px-2 py-2 text-sm font-bold rounded-md text-foreground bg-accent hover:bg-accent/80 transition-colors">
+                <a href='https://wa.me/233509079644' className="w-[200px] ml-3 text-left mt-10 px-2 py-2 text-sm font-bold rounded-md text-yellow-900 bg-yellow-400 hover:bg-yellow-500 transition-colors">
                     Contact Support
                 </a>
 

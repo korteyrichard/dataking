@@ -67,14 +67,14 @@ export default function DataPackages() {
     ];
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-muted/40">
             {/* Navigation */}
-            <nav className="fixed top-0 w-full z-50 bg-secondary shadow-lg border-b border-white/20">
+            <nav className="fixed top-0 w-full z-50 bg-background shadow-lg border-b border-border">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between items-center py-3 sm:py-4">
                         <a href="/" className="flex items-center">
                             <img 
-                                src='/dataspot.png' 
+                                src='/dataking.jpg' 
                                 alt="Dataking Logo" 
                                 className="w-32 h-auto rounded-2xl sm:w-40 md:w-48" 
                             />
@@ -83,7 +83,7 @@ export default function DataPackages() {
                         {/* Mobile menu button */}
                         <button 
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="lg:hidden flex items-center px-3 py-2 border rounded text-white border-white/30 hover:border-accent focus:outline-none transition-colors"
+                            className="lg:hidden flex items-center px-3 py-2 border rounded text-foreground border-border hover:border-accent focus:outline-none transition-colors"
                         >
                             {isMobileMenuOpen ? (
                                 <X className="h-6 w-6" />
@@ -96,7 +96,7 @@ export default function DataPackages() {
                         <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
                             <a 
                                 href="/" 
-                                className="text-white hover:text-accent font-medium transition-colors duration-300 px-3 py-2"
+                                className="text-foreground hover:text-accent font-medium transition-colors duration-300 px-3 py-2"
                             >
                                 Home
                             </a>
@@ -134,11 +134,11 @@ export default function DataPackages() {
 
                     {/* Mobile menu */}
                     {isMobileMenuOpen && (
-                        <div className="lg:hidden py-4 border-t border-white/20">
+                        <div className="lg:hidden py-4 border-t border-border">
                             <div className="flex flex-col space-y-4">
                                 <a 
                                     href="/" 
-                                    className="text-white hover:text-accent font-medium transition-colors duration-300 py-2"
+                                    className="text-foreground hover:text-accent font-medium transition-colors duration-300 py-2"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     Home
@@ -189,11 +189,11 @@ export default function DataPackages() {
             </nav>
 
             {/* Products Section */}
-            <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gray-50 mt-30">
+            <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-background mt-30">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
-                        <h2 className="text-4xl font-bold text-secondary mb-4">Available Networks</h2>
-                        <p className="text-gray-600 max-w-2xl mx-auto text-lg">
+                        <h2 className="text-4xl font-bold text-foreground mb-4">Available Networks</h2>
+                        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
                             Select your preferred network to view available data packages and pricing
                         </p>
                     </div>
@@ -203,7 +203,7 @@ export default function DataPackages() {
                             <div 
                                 key={network.id}
                                 onClick={() => handleNetworkClick(network.id)}
-                                className={`group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 ${network.borderColor} ${network.hoverBg}`}
+                                className={`group cursor-pointer bg-card rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-border hover:bg-accent/5`}
                             >
                                 <div className="flex flex-col items-center space-y-6 h-full justify-between">
                                     {/* Logo Container */}

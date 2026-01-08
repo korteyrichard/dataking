@@ -8,7 +8,7 @@ export default function BecomeAnAgent() {
 
     const handleBecomeAgent = (e: React.FormEvent) => {
         e.preventDefault();
-        post(route('become_a_dealer.update'));
+        post(route('become_an_agent.update'));
     };
 
     return (
@@ -17,22 +17,19 @@ export default function BecomeAnAgent() {
             <div className="w-full max-w-sm">
                 <div className="bg-white rounded-lg shadow-lg p-8">
                     <div className="flex flex-col items-center mb-8">
-                        <img src='/dataking.jpg' alt="Dataking Logo" className="w-60 h-30 mb-6 rounded-lg" />
+                        <img src='/dataking.jpg' alt="Dataking Logo" className="w-40 h-20 mb-6 rounded-lg" />
                         <h1 className="text-2xl font-bold text-gray-800 text-center">
-                            Become a Dealer
+                            Become an Agent
                         </h1>
-                        <p className="text-gray-600 text-sm text-center mt-2">
-                            You may proceed to make payment if you’re able to make daily MTN sales of GHC 2,000  or more for this better deal.
-                             Thank you and enjoy!
-                        </p>
+                       
                     </div>
                     <form onSubmit={handleBecomeAgent} className="space-y-4">
-                        <input type="hidden" name="amount" value="200" />
+                        <input type="hidden" name="amount" value="50" />
                         <Button 
                             className="w-full bg-blue-800 hover:bg-blue-600 text-white py-3 rounded-md font-medium transition-colors" 
                             disabled={processing}
                         >
-                            {processing ? 'Processing...' : 'Pay GHS 200.00 to Become A Dealer'}
+                            {processing ? 'Processing...' : 'Pay GHS 50.00 to Become An Agent'}
                         </Button>
                         {errors.message && <div className="text-red-500 text-xs mt-1">{errors.message}</div>}
                     </form>

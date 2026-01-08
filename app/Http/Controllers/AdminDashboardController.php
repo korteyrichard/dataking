@@ -21,56 +21,21 @@ class AdminDashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        $products = Product::with('variants')->get();
-        $orders = Order::with(['products' => function($query) {
-            $query->withPivot('quantity', 'price', 'beneficiary_number', 'product_variant_id');
-        }])->get();
-        
-        // Transform orders to include variant information
-        $orders = $orders->map(function($order) {
-            $order->products = $order->products->map(function($product) {
-                if ($product->pivot->product_variant_id) {
-                    $variant = \App\Models\ProductVariant::find($product->pivot->product_variant_id);
-                    if ($variant && isset($variant->variant_attributes['size'])) {
-                        $product->size = strtoupper($variant->variant_attributes['size']);
-                    }
-                }
-                return $product;
-            });
-            return $order;
-        });
-        $transactions = Transaction::all();
-
         $today = now()->today();
-        $todayUsers = User::whereDate('created_at', $today)->get();
-        $todayOrders = Order::with(['products' => function($query) {
-            $query->withPivot('quantity', 'price', 'beneficiary_number', 'product_variant_id');
-        }])->whereDate('created_at', $today)->get();
         
-        // Transform today's orders to include variant information
-        $todayOrders = $todayOrders->map(function($order) {
-            $order->products = $order->products->map(function($product) {
-                if ($product->pivot->product_variant_id) {
-                    $variant = \App\Models\ProductVariant::find($product->pivot->product_variant_id);
-                    if ($variant && isset($variant->variant_attributes['size'])) {
-                        $product->size = strtoupper($variant->variant_attributes['size']);
-                    }
-                }
-                return $product;
-            });
-            return $order;
-        });
-        $todayTransactions = Transaction::whereDate('created_at', $today)->get();
+        // Use count queries for better performance
+        $stats = [
+            'totalUsers' => User::count(),
+            'totalProducts' => Product::count(),
+            'totalOrders' => Order::count(),
+            'totalTransactions' => Transaction::count(),
+            'todayUsers' => User::whereDate('created_at', $today)->count(),
+            'todayOrders' => Order::whereDate('created_at', $today)->count(),
+            'todayTransactions' => Transaction::whereDate('created_at', $today)->count(),
+        ];
 
         return Inertia::render('Admin/Dashboard', [
-            'users' => $users,
-            'products' => $products,
-            'orders' => $orders,
-            'transactions' => $transactions,
-            'todayUsers' => $todayUsers,
-            'todayOrders' => $todayOrders,
-            'todayTransactions' => $todayTransactions,
+            'stats' => $stats,
             'orderPusherEnabled' => (bool) Setting::get('order_pusher_enabled', 1),
         ]);
     }
@@ -102,6 +67,7 @@ class AdminDashboardController extends Controller
         $customerCount = User::where('role', 'customer')->count();
         $agentCount = User::where('role', 'agent')->count();
         $adminCount = User::where('role', 'admin')->count();
+        $vipCount = User::where('role', 'vip')->count();
         $totalWalletBalance = User::sum('wallet_balance');
 
         return Inertia::render('Admin/Users', [
@@ -114,6 +80,7 @@ class AdminDashboardController extends Controller
                 'customers' => $customerCount,
                 'agents' => $agentCount,
                 'admins' => $adminCount,
+                'vips' => $vipCount,
                 'totalWalletBalance' => $totalWalletBalance,
             ],
         ]);
@@ -351,7 +318,7 @@ class AdminDashboardController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'role' => 'required|string|in:customer,agent,admin,dealer',
+            'role' => 'required|string|in:customer,agent,admin,dealer,vip',
         ]);
 
         User::create([
@@ -370,7 +337,7 @@ class AdminDashboardController extends Controller
     public function updateUserRole(Request $request, User $user)
     {
         $request->validate([
-            'role' => 'required|string|in:customer,agent,admin,dealer',
+            'role' => 'required|string|in:customer,agent,admin,dealer,vip',
         ]);
 
         $user->update([
@@ -470,7 +437,7 @@ class AdminDashboardController extends Controller
                 'network' => 'required|in:MTN,Telecel,Ishare,Bigtime',
                 'description' => 'required|string|max:255',
                 'expiry' => 'required|in:non expiry,30 days,24 hours',
-                'product_type' => 'required|in:agent_product,customer_product,dealer_product',
+                'product_type' => 'required|in:agent_product,customer_product,dealer_product,vip_product',
                 'variants' => 'required|array|min:1',
                 'variants.*.price' => 'required|numeric|min:0',
                 'variants.*.quantity' => 'required|string',
@@ -542,7 +509,7 @@ class AdminDashboardController extends Controller
             'network' => 'required|in:MTN,Telecel,Ishare,Bigtime',
             'description' => 'required|string|max:255',
             'expiry' => 'required|in:non expiry,30 days,24 hours',
-            'product_type' => 'required|in:agent_product,customer_product,dealer_product',
+            'product_type' => 'required|in:agent_product,customer_product,dealer_product,vip_product',
             'variants' => 'required|array|min:1',
             'variants.*.price' => 'required|numeric|min:0',
             'variants.*.quantity' => 'required|string',

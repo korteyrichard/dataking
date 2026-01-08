@@ -63,6 +63,7 @@ const EditRoleDialog: React.FC<EditRoleDialogProps> = ({ user }) => {
                 <option value="agent">Agent</option>
                 <option value="dealer">Dealer</option>
                 <option value="admin">Admin</option>
+                <option value="vip">VIP</option>
               </select>
             </div>
           </div>

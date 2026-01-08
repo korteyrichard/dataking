@@ -67,17 +67,17 @@ export default function Welcome() {
                 <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600,700,800,900" rel="stylesheet" />
             </Head>
             
-            <div className="min-h-screen bg-white overflow-x-hidden">
+            <div className="min-h-screen bg-muted/40 overflow-x-hidden">
                 {/* Navigation */}
                 <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
                     scrolled 
-                        ? 'bg-secondary shadow-lg' 
-                        : 'bg-secondary'
-                } border-b border-white/20`}>
+                        ? 'bg-background shadow-lg' 
+                        : 'bg-background'
+                } border-b border-border`}>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between items-center py-4">
                             <div className="text-2xl text-accent font-black bg-clip-text">
-                              <img src='/dataking.jpg' alt="Dataking Logo" className="w-60 h-30 mb-4 mx-auto rounded-3xl" />
+                              <img src='/dataking.jpg' alt="Dataking Logo" className="w-40 h-20 mb-4 mx-auto rounded-3xl" />
                             </div>
                             {/* Hamburger for mobile */}
                             <button
@@ -102,19 +102,19 @@ export default function Welcome() {
                                     <>
                                         <Link
                                             href={route('data-packages')}
-                                            className="px-4 py-2 text-white hover:text-accent font-medium transition-all duration-300"
+                                            className="px-4 py-2 text-foreground hover:text-accent font-medium transition-all duration-300"
                                         >
                                             Data Packages
                                         </Link>
                                         <Link
                                             href={route('register')}
-                                            className="px-6 py-2 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 hover:-translate-y-0.5 transition-all duration-300"
+                                            className="px-6 py-2 bg-accent text-accent-foreground font-medium rounded-full hover:bg-accent/80 hover:-translate-y-0.5 transition-all duration-300"
                                         >
                                             Register
                                         </Link>
                                         <Link
                                             href={route('login')}
-                                            className="px-6 py-2 bg-yellow-500 text-white font-medium rounded-full hover:bg-yellow-600 hover:-translate-y-0.5 transition-all duration-300"
+                                            className="px-6 py-2 bg-accent text-accent-foreground font-medium rounded-full hover:bg-accent/80 hover:-translate-y-0.5 transition-all duration-300"
                                         >
                                             Login
                                         </Link>
@@ -137,28 +137,28 @@ export default function Welcome() {
                                     <>
                                         <Link
                                             href={route('data-packages')}
-                                            className="block px-6 py-3 text-white font-medium rounded-full text-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:-translate-y-0.5 transition-all duration-300"
+                                            className="block px-6 py-3 text-foreground font-medium rounded-full text-center hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 transition-all duration-300"
                                             onClick={() => setNavOpen(false)}
                                         >
                                             Data Packages
                                         </Link>
                                         <Link
                                             href={route('register')}
-                                            className="block px-6 py-3 text-white font-medium rounded-full text-center hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:-translate-y-0.5 transition-all duration-300"
+                                            className="block px-6 py-3 text-foreground font-medium rounded-full text-center hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 transition-all duration-300"
                                             onClick={() => setNavOpen(false)}
                                         >
                                             Register
                                         </Link>
                                         <Link
                                             href={route('login')}
-                                            className="block px-6 py-3 text-white font-medium rounded-full text-center hover:bg-gradient-to-r hover:from-yellow-600 hover:to-yellow-600 hover:text-white hover:-translate-y-0.5 transition-all duration-300"
+                                            className="block px-6 py-3 text-foreground font-medium rounded-full text-center hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 transition-all duration-300"
                                             onClick={() => setNavOpen(false)}
                                         >
                                             Login
                                         </Link>
                                         <a
-                                            href="https://chat.whatsapp.com/DHaCb6BlUmP4TVShpNWoKO?mode=ems_wa_t"
-                                            className="block px-6 py-3 text-white font-medium rounded-full text-center hover:bg-gradient-to-r hover:from-yellow-600 hover:to-yellow-600 hover:text-white hover:-translate-y-0.5 transition-all duration-300"
+                                            href="https://chat.whatsapp.com/FfMdsIMiHpH8jEt1jtm3Kf?mode=wwt"
+                                            className="block px-6 py-3 text-foreground font-medium rounded-full text-center hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 transition-all duration-300"
                                             onClick={() => setNavOpen(false)}
                                         >
                                             Join Community
@@ -182,12 +182,12 @@ export default function Welcome() {
 
                     <div className="max-w-4xl mx-auto z-10 relative mt-[50px]">
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black mb-6 leading-tight">
-                            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-foreground to-accent bg-clip-text text-transparent">
                                 Welcome To Dataking
                             </span>
                         </h1>
                         
-                        <p className="text-xl sm:text-2xl text-secondary mb-12 max-w-3xl mx-auto leading-relaxed">
+                        <p className="text-xl sm:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
                              We Prioritize Our Customers Wish And Provide Quality Services To Meet Their Demands
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

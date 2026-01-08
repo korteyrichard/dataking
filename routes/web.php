@@ -18,14 +18,14 @@ use App\Http\Controllers\TermsController;
 Route::get('/', [DashboardController::class, 'home'])->name('home');
 Route::get('/data-packages', [DashboardController::class, 'dataPackages'])->name('data-packages');
 
-Route::get('/become_a_dealer', function () {
+Route::get('/become_an_agent', function () {
         return Inertia::render('become_an_agent');
-    })->name('become_a_dealer');
+    })->name('become_an_agent');
 
 Route::middleware(['auth'])->group(function () {
-    Route::post('/become_a_dealer', [BecomeAgentController::class, 'update'])->name('become_a_dealer.update');
+    Route::post('/become_an_agent', [BecomeAgentController::class, 'update'])->name('become_an_agent.update');
 });
-Route::get('/dealer/callback', [BecomeAgentController::class, 'handleAgentCallback'])->name('dealer.callback');
+Route::get('/agent/callback', [BecomeAgentController::class, 'handleAgentCallback'])->name('agent.callback');
 
 // Public routes for unregistered users
 Route::post('/add-to-cart', [CartController::class, 'store'])->name('add.to.cart');

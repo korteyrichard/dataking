@@ -23,13 +23,13 @@ export default function Login() {
     };
 
     return (
-        <div className="min-h-screen bg-secondary flex items-center justify-center p-4">
+        <div className="min-h-screen bg-muted/40 flex items-center justify-center p-4">
             <Head title="Log in" />
             <div className="w-full max-w-sm">
-                <div className="bg-white rounded-lg shadow-lg p-8">
+                <div className="bg-background rounded-lg shadow-lg p-8 border border-border">
                     <div className="flex flex-col items-center mb-8">
-                        <div className="bg-blue-900 p-4 rounded-lg mb-6">
-                            <img src='/dataking.jpg' alt="Dataking Logo" className="w-52 h-auto rounded-lg" />
+                        <div className="bg-muted p-4 rounded-lg mb-6">
+                            <img src='/dataking.jpg' alt="Dataking Logo" className="w-40 h-auto rounded-lg" />
                         </div>
                     </div>
                     <form onSubmit={submit} className="space-y-4">
@@ -44,7 +44,7 @@ export default function Login() {
                                 onChange={(e) => setData('email', e.target.value)}
                                 required
                                 autoFocus
-                                className="w-full px-4 py-3 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                className="w-full px-4 py-3 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                             />
                             {errors.email && <div className="text-red-500 text-xs mt-1">{errors.email}</div>}
                         </div>
@@ -59,12 +59,12 @@ export default function Login() {
                                     autoComplete="current-password"
                                     onChange={(e) => setData('password', e.target.value)}
                                     required
-                                    className="w-full px-4 py-3 pr-10 border border-blue-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                                    className="w-full px-4 py-3 pr-10 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                                 >
                                     {showPassword ? (
                                         <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeWidth="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L3 3m6.878 6.878L21 21"/></svg>
@@ -76,24 +76,24 @@ export default function Login() {
                             {errors.password && <div className="text-red-500 text-xs mt-1">{errors.password}</div>}
                         </div>
                         <Button 
-                            className="w-full bg-yellow-500 hover:bg-yellow-600 text-blue-900 py-3 rounded-md font-medium transition-colors" 
+                            className="w-full bg-accent hover:bg-accent/80 text-accent-foreground py-3 rounded-md font-medium transition-colors" 
                             disabled={processing}
                         >
                             Sign in →
                         </Button>
                     </form>
                     <div className="mt-6 text-center space-y-2">
-                        <div className="text-sm text-blue-700">
-                            New to our site? <Link href={route('register')} className="text-yellow-600 hover:underline font-medium">Signup</Link>
+                        <div className="text-sm text-foreground">
+                            New to our site? <Link href={route('register')} className="text-accent hover:underline font-medium">Signup</Link>
                         </div>
                         <div className="text-sm">
-                            <Link href={route('password.request')} className="text-yellow-600 hover:underline font-medium">Forgot password?</Link>
-                            <span className="mx-2 text-blue-400">•</span>
-                            <Link href="/" className="text-yellow-600 hover:underline font-medium">Home</Link>
+                            <Link href={route('password.request')} className="text-accent hover:underline font-medium">Forgot password?</Link>
+                            <span className="mx-2 text-muted-foreground">•</span>
+                            <Link href="/" className="text-accent hover:underline font-medium">Home</Link>
                         </div>
                     </div>
                     <div className="mt-4">
-                        <label className="flex items-center gap-2 text-sm text-blue-700">
+                        <label className="flex items-center gap-2 text-sm text-foreground">
                             <input
                                 type="checkbox"
                                 name="remember"

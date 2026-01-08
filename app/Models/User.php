@@ -111,4 +111,14 @@ class User extends Authenticatable
     {
         return $this->role === 'admin';
     }
+
+    /**
+     * Check if the user is a VIP.
+     *
+     * @return bool
+     */
+    public function isVip(): bool
+    {
+        return $this->role === 'vip';
+    }
 }

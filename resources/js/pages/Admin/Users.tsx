@@ -45,6 +45,7 @@ interface UsersPageProps extends PageProps {
     customers: number;
     agents: number;
     admins: number;
+    vips: number;
     totalWalletBalance: number;
   };
 }
@@ -85,7 +86,7 @@ const UsersPage = ({ auth, users, filterEmail, filterPhone, filterRole, userStat
       }
     >
       {/* User Statistics */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+      <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-6">
         <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-xs font-semibold text-white/90 uppercase tracking-wide">Total Users</h3>
@@ -127,6 +128,16 @@ const UsersPage = ({ auth, users, filterEmail, filterPhone, filterRole, userStat
         </div>
         
         <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-xs font-semibold text-white/90 uppercase tracking-wide">VIPs</h3>
+            <div className="p-2 bg-white/20 rounded-lg">
+              <Shield className="w-4 h-4 text-white" />
+            </div>
+          </div>
+          <p className="text-2xl font-bold text-white">{userStats.vips}</p>
+        </div>
+        
+        <div className="bg-gradient-to-br from-indigo-500 to-indigo-600 p-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 border border-white/20">
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-xs font-semibold text-white/90 uppercase tracking-wide">Total Wallet Balance</h3>
             <div className="p-2 bg-white/20 rounded-lg">
@@ -187,6 +198,7 @@ const UsersPage = ({ auth, users, filterEmail, filterPhone, filterRole, userStat
               <option value="agent">Agent</option>
               <option value="dealer">Dealer</option>
               <option value="admin">Admin</option>
+              <option value="vip">VIP</option>
             </select>
           </div>
           

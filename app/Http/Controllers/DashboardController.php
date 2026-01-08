@@ -276,8 +276,15 @@ class DashboardController extends Controller
             $productType = 'agent_product';
         } elseif ($user->role === 'dealer' || $user->role === 'admin') {
             $productType = 'dealer_product';
+        } elseif ($user->role === 'vip') {
+            $productType = 'vip_product';
         } else {
             $productType = 'customer_product';
+        }
+        
+        // Check if user has access to VIP products for the requested network
+        if ($user && $productType === 'vip_product' && $user->role !== 'vip') {
+            return response()->json(['success' => false, 'message' => 'Access denied. VIP products are only available to VIP users.']);
         }
         
         $product = Product::where('network', $network)
@@ -338,6 +345,8 @@ class DashboardController extends Controller
             $productType = 'dealer_product';
         } elseif ($user->role === 'admin') {
             $productType = 'dealer_product';
+        } elseif ($user->role === 'vip') {
+            $productType = 'vip_product';
         } else {
             $productType = 'customer_product';
         }

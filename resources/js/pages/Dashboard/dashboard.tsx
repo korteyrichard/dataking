@@ -87,10 +87,10 @@ export default function Dashboard({ auth }: DashboardProps) {
             {auth.user.role === 'customer' && (
               <div className="ml-auto">
                 <Link
-                  href={route('become_a_dealer')}
+                  href={route('become_an_agent')}
                   className="inline-block px-6 py-2 text-white font-medium rounded-full bg-gradient-to-r from-purple-600 to-blue-600 hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 hover:text-white hover:-translate-y-0.5 transition-all duration-300"
                 >
-                  Become A Dealer
+                  Become An Agent
                 </Link>
               </div>
             )}
@@ -168,10 +168,10 @@ export default function Dashboard({ auth }: DashboardProps) {
                 {/* MTN Card */}
                 <div 
                   onClick={() => router.visit(route('product.single', { network: 'MTN' }))}
-                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-accent/30 hover:bg-accent/10"
+                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-yellow-400/30 hover:bg-yellow-50"
                 >
                   <div className="flex flex-col items-center space-y-6 h-full justify-center">
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <img src="/mtnlogo.jpeg" alt="MTN" className="w-16 h-16 object-contain" />
                     </div>
                     <div className="text-center">
@@ -184,10 +184,10 @@ export default function Dashboard({ auth }: DashboardProps) {
                 {/* Telecel Card */}
                 <div 
                   onClick={() => router.visit(route('product.single', { network: 'TELECEL' }))}
-                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-secondary/30 hover:bg-secondary/10"
+                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-red-500/30 hover:bg-red-50"
                 >
                   <div className="flex flex-col items-center space-y-6 h-full justify-center">
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <img src="/telecellogo.png" alt="Telecel" className="w-16 h-16 object-contain" />
                     </div>
                     <div className="text-center">
@@ -200,10 +200,10 @@ export default function Dashboard({ auth }: DashboardProps) {
                 {/* AT iShare Card */}
                 <div 
                   onClick={() => router.visit(route('product.single', { network: 'ISHARE' }))}
-                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-primary/30 hover:bg-primary/10"
+                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-blue-500/30 hover:bg-blue-50"
                 >
                   <div className="flex flex-col items-center space-y-6 h-full justify-center">
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <img src="/atlogo.png" alt="AT iShare" className="w-16 h-16 object-contain" />
                     </div>
                     <div className="text-center">
@@ -216,10 +216,10 @@ export default function Dashboard({ auth }: DashboardProps) {
                 {/* AT BigTime Card */}
                 <div 
                   onClick={() => router.visit(route('product.single', { network: 'BIGTIME' }))}
-                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-primary/30 hover:bg-primary/10"
+                  className="group cursor-pointer bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-blue-500/30 hover:bg-blue-50"
                 >
                   <div className="flex flex-col items-center space-y-6 h-full justify-center">
-                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <img src="/atlogo.png" alt="AT BigTime" className="w-16 h-16 object-contain" />
                     </div>
                     <div className="text-center">
