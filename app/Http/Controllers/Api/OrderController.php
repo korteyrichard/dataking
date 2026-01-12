@@ -37,6 +37,14 @@ class OrderController extends Controller
 
         $user = auth()->user();
         
+        // Debug log user details
+        Log::info('API Order User Check', [
+            'user_id' => $user->id,
+            'user_role' => $user->role,
+            'user_role_type' => gettype($user->role),
+            'network_id' => $request->network_id
+        ]);
+        
         // Map network IDs to network names
         $networkMap = [
             5 => 'MTN',      // Agent MTN
@@ -70,8 +78,20 @@ class OrderController extends Controller
             return response()->json(['error' => 'Invalid network ID'], 400);
         }
         
-        // Check if user has access to VIP products
+        // Debug user role
+        Log::info('API Order Debug', ['user_id' => $user->id, 'user_role' => $user->role, 'product_type' => $productType, 'network_id' => $request->network_id]);
+        
+        // Check if user has access to the requested product type
+        if ($productType === 'agent_product' && !in_array($user->role, ['agent', 'admin'])) {
+            return response()->json(['error' => 'Access denied. Agent products are only available to agents.'], 403);
+        }
+        
+        if ($productType === 'dealer_product' && !in_array($user->role, ['dealer', 'admin'])) {
+            return response()->json(['error' => 'Access denied. Dealer products are only available to dealers.'], 403);
+        }
+        
         if ($productType === 'vip_product' && $user->role !== 'vip') {
+            Log::error('VIP Access Denied', ['user_role' => $user->role, 'expected' => 'vip']);
             return response()->json(['error' => 'Access denied. VIP products are only available to VIP users.'], 403);
         }
         

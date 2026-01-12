@@ -46,6 +46,8 @@ class CartController extends Controller
                 $productType = 'agent_product';
             } elseif ($user->role === 'dealer' || $user->role === 'admin') {
                 $productType = 'dealer_product';
+            } elseif ($user->role === 'vip') {
+                $productType = 'vip_product';
             } else {
                 $productType = 'customer_product';
             }
@@ -205,6 +207,8 @@ class CartController extends Controller
                 $productType = 'agent_product';
             } elseif ($user->role === 'dealer' || $user->role === 'admin') {
                 $productType = 'dealer_product';
+            } elseif ($user->role === 'vip') {
+                $productType = 'vip_product';
             } else {
                 $productType = 'customer_product';
             }
@@ -334,6 +338,8 @@ class CartController extends Controller
                 $productType = 'agent_product';
             } elseif ($user->role === 'dealer' || $user->role === 'admin') {
                 $productType = 'dealer_product';
+            } elseif ($user->role === 'vip') {
+                $productType = 'vip_product';
             } else {
                 $productType = 'customer_product';
             }
